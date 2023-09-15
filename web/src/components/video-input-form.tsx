@@ -1,5 +1,5 @@
-import { Label } from '@radix-ui/react-label';
-import { Separator } from '@radix-ui/react-separator';
+import { Label } from './ui/label';
+import { Separator } from './ui/separator';
 import { FileVideo, Upload } from 'lucide-react';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';

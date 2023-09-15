@@ -13,6 +13,7 @@ import {
 import { Slider } from './components/ui/slider';
 import { VideoInputForm } from './components/video-input-form';
 import { PromptSelect } from './components/prompt-select';
+import { ToggleThemeMode } from './components/toggle-theme-mode';
 import { useState } from 'react';
 import { useCompletion } from 'ai/react';
 
@@ -48,9 +49,16 @@ export function App() {
                     </span>
                     <Separator orientation="vertical" className="h-6" />
                     <Button variant="outline">
-                        <Github className="w-4 h-4 mr-2" />
-                        GitHub
+                        <a
+                            href="https://github.com/Ronald785/uploadAI-nlw13"
+                            target="_blank"
+                            className="flex items-center"
+                        >
+                            <Github className="w-4 h-4 mr-2" />
+                            GitHub
+                        </a>
                     </Button>
+                    <ToggleThemeMode />
                 </div>
             </header>
 
