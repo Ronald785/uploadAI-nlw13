@@ -36,7 +36,13 @@ $ cd uploadAI-nlw13\server
 #Instale as dependências
 $ npm install
 
-#Modifique o arquivo .env com API Key da OpenAI
+#Aplica migrações ao BD
+$ npx prisma db push
+
+#Preenche o BD com o arquivo seed
+$ npx prisma db seed
+
+#Modifique o arquivo .env com sua API Key da OpenAI
 
 #Inicie a API
 $ npm run dev
