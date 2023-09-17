@@ -10,6 +10,8 @@ import { ToggleThemeMode } from './components/toggle-theme-mode';
 import { useState } from 'react';
 import { useCompletion } from 'ai/react';
 import { ModelSelect } from './components/model-select';
+import { useTranslation } from 'react-i18next';
+import { DropdownLocale } from './components/dropdown-locale';
 
 export function App() {
     const [temperature, setTemperature] = useState(0.5);
@@ -34,6 +36,7 @@ export function App() {
             'Content-type': 'application/json'
         }
     });
+    const { t } = useTranslation();
     return (
         <div className="min-h-screen flex flex-col">
             <header className="px-6 py-3 flex items-center justify-between border-b">
@@ -41,7 +44,7 @@ export function App() {
 
                 <div className="flex items-center gap-3">
                     <span className="text-sm text-muted-foreground">
-                        Desenvolvido no NLW#13 da Rocketseat🚀
+                        {t('developed_at')}🚀
                     </span>
                     <Separator orientation="vertical" className="h-6" />
                     <Button variant="outline">
@@ -54,6 +57,9 @@ export function App() {
                             GitHub
                         </a>
                     </Button>
+
+                    <DropdownLocale />
+
                     <ToggleThemeMode />
                 </div>
             </header>
@@ -63,23 +69,22 @@ export function App() {
                     <div className="grid grid-rows-2 gap-4 flex-1">
                         <Textarea
                             className="resize-none p-4 leading-relaxed"
-                            placeholder="Inclua o prompt para a IA..."
+                            placeholder={t('include_prompt')}
                             value={input}
                             onChange={handleInputChange}
                         />
                         <Textarea
                             className="resize-none p-4 leading-relaxed"
-                            placeholder="Resultado gerado pela IA..."
+                            placeholder={t('ai_result')}
                             value={completion}
                             readOnly
                         />
                     </div>
 
                     <p className="text-sm text-muted-foreground">
-                        Lembre-se: você pode utilizar a variável{' '}
-                        <code className="text-violet-400">{`{transcription}`}</code>{' '}
-                        no seu prompt para adicionar o conteúdo da transcrição
-                        do vídeo selecionado.
+                        {t('reminder1')}
+                        <code className="text-violet-400">{` {transcription} `}</code>
+                        {t('reminder2')}
                     </p>
                 </div>
 
@@ -90,17 +95,20 @@ export function App() {
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
-                            <Label>Prompt</Label>
+                            <Label>{t('prompt')}</Label>
                             <PromptSelect onPromptSelected={setInput} />
                         </div>
 
                         <div className="space-y-2">
-                            <Label>Modelo</Label> - {model}
+                            <Label>{t('model')}</Label> - {model}
                             <ModelSelect onModelSelected={setModel} />
                         </div>
 
                         <div className="space-y-4">
-                            <Label>Temperatura - {temperature}</Label>
+                            <div className="flex justify-between">
+                                <Label>{t('temperature')}</Label>
+                                <span>{temperature}</span>
+                            </div>
                             <Slider
                                 min={0}
                                 max={1}
@@ -111,8 +119,7 @@ export function App() {
                                 }
                             />
                             <span className="block text-sm text-muted-foreground italic leading-relaxed">
-                                Valores mais altos tendem a deixar o resultado
-                                mais criativo e com possíveis erros.
+                                {t('higher_values')}
                             </span>
                         </div>
 
@@ -123,7 +130,7 @@ export function App() {
                             type="submit"
                             className="w-full"
                         >
-                            Executar
+                            {t('execute')}
                             <Wand2 className="w-4 h-4 ml-2" />
                         </Button>
                     </form>

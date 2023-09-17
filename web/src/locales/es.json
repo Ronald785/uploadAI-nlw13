@@ -1,0 +1,23 @@
+{
+    "developed_at": "Desarrollado en NLW#13 por Rocketseat",
+    "include_prompt": "Incluir el prompt para la IA...",
+    "ai_result": "Resultado generado por la IA...",
+    "note": "Recuerda: puedes usar la variable en tu prompt para agregar el contenido de la transcripción del video seleccionado.",
+    "model": "Modelo",
+    "temperature": "Temperatura",
+    "higher_values": "Valores más altos tienden a hacer que el resultado sea más creativo y pueden tener errores potenciales.",
+    "execute": "Ejecutar",
+    "select_prompt": "Seleccionar un prompt...",
+    "theme": "Tema",
+    "converting": "Convirtiendo...",
+    "loading": "Cargando...",
+    "transcribing": "Transcribiendo...",
+    "success": "Éxito!",
+    "select_video": "Seleccionar un video",
+    "transcription_prompt": "Prompt de transcripción",
+    "prompt": "Prompt",
+    "upload_video": "Cargar video",
+    "keywords_sentence": "Incluye palabras clave mencionadas en el video separadas por una coma (,)",
+    "reminder1": "Recuerda: puedes usar la variable",
+    "reminder2": "en tu prompt para agregar el contenido de la transcripción del video seleccionado."
+}

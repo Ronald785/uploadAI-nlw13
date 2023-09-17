@@ -7,6 +7,7 @@ import {
     SelectValue
 } from './ui/select';
 import { api } from '@/lib/axios';
+import { useTranslation } from 'react-i18next';
 
 interface Prompt {
     id: string;
@@ -36,10 +37,11 @@ export function PromptSelect(props: PromptSelectProps) {
         props.onPromptSelected(selectedPrompt.template);
     }
 
+    const { t } = useTranslation();
     return (
         <Select onValueChange={handlePromptSelected}>
             <SelectTrigger>
-                <SelectValue placeholder="Selecione um prompt..." />
+                <SelectValue placeholder={t('select_prompt')} />
             </SelectTrigger>
             <SelectContent>
                 {prompts?.map((prompt) => {

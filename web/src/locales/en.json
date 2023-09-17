@@ -1,0 +1,23 @@
+{
+    "developed_at": "Developed at NLW#13 by Rocketseat",
+    "include_prompt": "Include prompt for AI...",
+    "ai_result": "AI-generated Result...",
+    "note": "Remember: you can use the variable in your prompt to add the content of the selected video's transcription.",
+    "model": "Model",
+    "temperature": "Temperature",
+    "higher_values": "Higher values tend to make the result more creative and may have potential errors.",
+    "execute": "Execute",
+    "select_prompt": "Select a prompt...",
+    "theme": "Theme",
+    "converting": "Converting...",
+    "loading": "Loading...",
+    "transcribing": "Transcribing...",
+    "success": "Success!",
+    "select_video": "Select a video",
+    "transcription_prompt": "Transcription prompt",
+    "prompt": "Prompt",
+    "upload_video": "Upload video",
+    "keywords_sentence": "Include keywords mentioned in the video separated by a comma (,)",
+    "reminder1": "Remember: you can use the variable",
+    "reminder2": "in your prompt to add the content of the selected video's transcription."
+}

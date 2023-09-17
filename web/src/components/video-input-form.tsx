@@ -7,15 +7,9 @@ import { ChangeEvent, FormEvent, useMemo, useRef, useState } from 'react';
 import { getFFmpeg } from '@/lib/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 import { api } from '@/lib/axios';
+import { useTranslation } from 'react-i18next';
 
 type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'success';
-
-const statusMessages = {
-    converting: 'Convertendo...',
-    uploading: 'Carregando...',
-    generating: 'Transcrevendo...',
-    success: 'Sucesso!'
-};
 
 interface VideoInputFormProps {
     onVideoUploaded: (id: string) => void;
@@ -26,6 +20,15 @@ export function VideoInputForm(props: VideoInputFormProps) {
     const [status, setStatus] = useState<Status>('waiting');
 
     const promptInputRef = useRef<HTMLTextAreaElement>(null);
+
+    const { t } = useTranslation();
+
+    const statusMessages = {
+        converting: t('converting'),
+        uploading: t('loading'),
+        generating: t('transcribing'),
+        success: t('success')
+    };
 
     function handleFileSelected(event: ChangeEvent<HTMLInputElement>) {
         const { files } = event.currentTarget;
@@ -130,7 +133,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
                 ) : (
                     <>
                         <FileVideo className="h-4 w-4" />
-                        Selecione um vídeo
+                        {t('select_video')}
                     </>
                 )}
             </label>
@@ -147,14 +150,14 @@ export function VideoInputForm(props: VideoInputFormProps) {
 
             <div className="space-y-2">
                 <Label htmlFor="transcription_prompt">
-                    Prompt de transcrição
+                    {t('transcription_prompt')}
                 </Label>
                 <Textarea
                     ref={promptInputRef}
                     disabled={status != 'waiting' && status != 'success'}
                     id="transcription_prompt"
                     className="h-20 leading-relaxed resize-none"
-                    placeholder="Inclusa palavras-chave mencionadas no vídeo separada por vírgula (,)"
+                    placeholder={t('keywords_sentence')}
                 />
             </div>
 
@@ -166,7 +169,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
             >
                 {status == 'waiting' ? (
                     <>
-                        Carregar vídeo
+                        {t('upload_video')}
                         <Upload className="w-4 h-4 ml-2" />
                     </>
                 ) : (
